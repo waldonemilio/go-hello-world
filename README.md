@@ -12,7 +12,7 @@ A simple yet elegant web application showcasing the power of Dockerized Go for d
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/your-username/hello-world-extravaganza.git](https://github.com/your-username/hello-world-extravaganza.git)
+   git clone https://github.com/waldonemilio/go-hello-world.git
    ```
 2. Navigate to the project directory:
     ```bash
