@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  hello-go:
+    build: .
+    ports: 
+      - "3000:8080"
+    image: hello-go
