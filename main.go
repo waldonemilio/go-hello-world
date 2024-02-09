@@ -1,10 +1,25 @@
 package main
 
 import (
+    "flag"
     "fmt"
     "net/http"
     "text/template"
 )
+
+func factorial(n int) int {
+    if n == 0 {
+        return 1
+    }
+    return n * factorial(n-1)
+}
+
+func fibonacci(n int) int {
+    if n < 2 {
+        return n
+    }
+    return fibonacci(n-1) + fibonacci(n-2)
+}
 
 func handler(w http.ResponseWriter, r *http.Request) {
     tmpl, err := template.ParseFiles("public/index.html")
@@ -13,15 +28,19 @@ func handler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    numbers := []int{}
-    for i := 1; i <= 10; i++ {
-        numbers = append(numbers, i)
-    }
+    numCount := flag.Int("count", 10, "Number of values to generate")
+    flag.Parse()
 
     data := struct {
-        Numbers []int
-    }{
-        Numbers: numbers,
+        Numbers     []int
+        Factorials  []int
+        Fibonaccis  []int
+    }{}
+
+    for i := 1; i <= *numCount; i++ {
+        data.Numbers = append(data.Numbers, i)
+        data.Factorials = append(data.Factorials, factorial(i))
+        data.Fibonaccis = append(data.Fibonaccis, fibonacci(i))
     }
 
     tmpl.Execute(w, data)

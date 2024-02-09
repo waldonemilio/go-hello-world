@@ -23,11 +23,26 @@
     <div class="numbers">
         <h2>Numbers:</h2>
         <ul>
-            {{ range .Numbers }} 
-                <li>{{ . }}</li> 
-            {{ end }}
+          {{ range .Numbers }}
+            <li>{{ . }}</li>
+          {{ end }}
         </ul>
-    </div>
+    
+        <h2>Factorials:</h2>
+        <ul>
+          {{ range .Factorials }}
+            <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+    
+        <h2>Fibonacci Sequence:</h2>
+        <ul>
+          {{ range .Fibonaccis }}
+            <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    
 
     <script src="static/script.js"></script> 
 </body>
